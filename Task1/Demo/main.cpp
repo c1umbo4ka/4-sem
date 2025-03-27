@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <fstream>
 #include <iterator>
 #include <algorithm>
@@ -6,9 +6,9 @@
 #include <locale>
 
 /**
- * @brief Преобразует строку в число типа double.
- * @param str Строка, содержащая вещественное число.
- * @return Число, если преобразование успешно, иначе 0.0.
+ * @brief РџСЂРµРѕР±СЂР°Р·СѓРµС‚ СЃС‚СЂРѕРєСѓ РІ С‡РёСЃР»Рѕ С‚РёРїР° double.
+ * @param str РЎС‚СЂРѕРєР°, СЃРѕРґРµСЂР¶Р°С‰Р°СЏ РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ.
+ * @return Р§РёСЃР»Рѕ, РµСЃР»Рё РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ СѓСЃРїРµС€РЅРѕ, РёРЅР°С‡Рµ 0.0.
  */
 double string_to_double(const std::string& str) {
     std::stringstream ss(str);  
@@ -17,15 +17,15 @@ double string_to_double(const std::string& str) {
 }
 
 /**
- * @brief Подсчитывает количество положительных чисел в файле.
- * @param filename Имя файла, содержащего строковые представления чисел.
- * @return Количество положительных чисел в файле.
- * @throws Если файл не удаётся открыть.
+ * @brief РџРѕРґСЃС‡РёС‚С‹РІР°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… С‡РёСЃРµР» РІ С„Р°Р№Р»Рµ.
+ * @param filename РРјСЏ С„Р°Р№Р»Р°, СЃРѕРґРµСЂР¶Р°С‰РµРіРѕ СЃС‚СЂРѕРєРѕРІС‹Рµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ С‡РёСЃРµР».
+ * @return РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… С‡РёСЃРµР» РІ С„Р°Р№Р»Рµ.
+ * @throws Р•СЃР»Рё С„Р°Р№Р» РЅРµ СѓРґР°С‘С‚СЃСЏ РѕС‚РєСЂС‹С‚СЊ.
  */
 int count_positive_numbers(const std::string& filename) {
     std::ifstream file(filename);  
     if (!file)
-        throw std::runtime_error("Ошибка: Не удалось открыть файл!");
+        throw std::runtime_error("РћС€РёР±РєР°: РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»!");
 
     std::istream_iterator<std::string> it(file), end; 
     return std::count_if(it, end, [](const std::string& str) {
@@ -34,13 +34,13 @@ int count_positive_numbers(const std::string& filename) {
 }
 
 /**
- * @brief Точка входа в программу. Запускает подсчёт положительных чисел в файле.
- * @return int Код возврата программы.
+ * @brief РўРѕС‡РєР° РІС…РѕРґР° РІ РїСЂРѕРіСЂР°РјРјСѓ. Р—Р°РїСѓСЃРєР°РµС‚ РїРѕРґСЃС‡С‘С‚ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… С‡РёСЃРµР» РІ С„Р°Р№Р»Рµ.
+ * @return int РљРѕРґ РІРѕР·РІСЂР°С‚Р° РїСЂРѕРіСЂР°РјРјС‹.
  */
 int main() {
     setlocale(LC_ALL, "RU");
     try {
-        std::cout << "Количество положительных чисел: "
+        std::cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… С‡РёСЃРµР»: "
             << count_positive_numbers("../Demo/name.txt") << std::endl;
     }
     catch (const std::exception& e) {
