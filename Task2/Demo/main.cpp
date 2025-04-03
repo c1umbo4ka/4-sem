@@ -9,35 +9,33 @@
  * @param n Количество элементов в векторе.
  * @return Вектор, заполненный пользователем.
  */
-std::vector<int> inputVector(int n) {
-    std::vector<int> V(n);
+std::vector<int> input_vector(int n) {
+    std::vector<int> v(n);
     std::cout << "Введите элементы вектора:" << std::endl;
-    std::copy_n(std::istream_iterator<int>(std::cin), n, V.begin());
-    return V;
+    std::copy_n(std::istream_iterator<int>(std::cin), n, v.begin());
+    return v;
 }
 
 /**
  * @brief Функция для удаления трех средних элементов из вектора.
- * @param V Вектор, из которого нужно удалить элементы.
+ * @param v Вектор, из которого нужно удалить элементы.
  * @return Вектор после удаления трех средних элементов.
  */
-std::vector<int> removeMiddleElements(const std::vector<int>& V) {
-    int n = V.size();
-    int middleIndex = n / 2;
-    std::vector<int> result;
+std::vector<int> remove_middle_elements(std::vector<int> v) {
+    int n = v.size();
+    int middle_index = n / 2;
 
-    std::copy(V.begin(), V.begin() + middleIndex - 1, std::back_inserter(result));
-    std::copy(V.begin() + middleIndex + 2, V.end(), std::back_inserter(result));
+    v.erase(v.begin() + middle_index - 1, v.begin() + middle_index + 2);
 
-    return result;
+    return v;
 }
 
 /**
  * @brief Функция для вывода вектора.
- * @param V Вектор для вывода.
+ * @param v Вектор для вывода.
  */
-void printVector(const std::vector<int>& V) {
-    std::copy(V.begin(), V.end(), std::ostream_iterator<int>(std::cout, " "));
+void print_vector(const std::vector<int>& v) {
+    std::copy(v.begin(), v.end(), std::ostream_iterator<int>(std::cout, " "));
     std::cout << std::endl;
 }
 
@@ -45,15 +43,15 @@ int main() {
     setlocale(LC_ALL, "RU");
     int n;
 
-    std::cout << "Введите нечетное количество элементов (≥ 5): ";
+    std::cout << "Введите нечетное количество элементов (не меньше 5): ";
     std::cin >> n;
 
     if (n >= 5 && n % 2 != 0) {
-        std::vector<int> V = inputVector(n);
-        std::vector<int> result = removeMiddleElements(V);
+        std::vector<int> v = input_vector(n);
+        std::vector<int> result = remove_middle_elements(v);
 
         std::cout << "Вектор после удаления трех средних элементов:" << std::endl;
-        printVector(result);
+        print_vector(result);
     }
     else {
         std::cerr << "Количество элементов должно быть нечетным и не менее 5." << std::endl;
