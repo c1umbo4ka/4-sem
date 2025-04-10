@@ -46,17 +46,16 @@ int main() {
     std::cout << "Введите нечетное количество элементов (не меньше 5): ";
     std::cin >> n;
 
-    if (n >= 5 && n % 2 != 0) {
-        std::vector<int> v = input_vector(n);
-        std::vector<int> result = remove_middle_elements(v);
-
-        std::cout << "Вектор после удаления трех средних элементов:" << std::endl;
-        print_vector(result);
-    }
-    else {
+    if (n < 5 || n % 2 == 0) {
         std::cerr << "Количество элементов должно быть нечетным и не менее 5." << std::endl;
         return 1;
     }
+        
+    std::vector<int> v = input_vector(n);
+    std::vector<int> result = remove_middle_elements(v);
+
+    std::cout << "Вектор после удаления трех средних элементов:" << std::endl;
+    print_vector(result);
 
     return 0;
 }
