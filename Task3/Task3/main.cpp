@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <vector>
 #include <map>
 #include <algorithm>
@@ -6,18 +6,18 @@
 #include <cmath>
 
 /**
- * @brief Получает последнюю цифру целого числа.
- * @param number Целое число.
- * @return int Последняя цифра числа.
+ * @brief РџРѕР»СѓС‡Р°РµС‚ РїРѕСЃР»РµРґРЅСЋСЋ С†РёС„СЂСѓ С†РµР»РѕРіРѕ С‡РёСЃР»Р°.
+ * @param number Р¦РµР»РѕРµ С‡РёСЃР»Рѕ.
+ * @return int РџРѕСЃР»РµРґРЅСЏСЏ С†РёС„СЂР° С‡РёСЃР»Р°.
  */
 int last_digit(int number) {
     return std::abs(number) % 10;
 }
 
 /**
- * @brief Группирует элементы вектора по последней цифре.
- * @param vec Входной вектор целых чисел.
- * @return std::multimap<int, int> Мультиотображение, сгруппированное по последней цифре.
+ * @brief Р“СЂСѓРїРїРёСЂСѓРµС‚ СЌР»РµРјРµРЅС‚С‹ РІРµРєС‚РѕСЂР° РїРѕ РїРѕСЃР»РµРґРЅРµР№ С†РёС„СЂРµ.
+ * @param vec Р’С…РѕРґРЅРѕР№ РІРµРєС‚РѕСЂ С†РµР»С‹С… С‡РёСЃРµР».
+ * @return std::multimap<int, int> РњСѓР»СЊС‚РёРѕС‚РѕР±СЂР°Р¶РµРЅРёРµ, СЃРіСЂСѓРїРїРёСЂРѕРІР°РЅРЅРѕРµ РїРѕ РїРѕСЃР»РµРґРЅРµР№ С†РёС„СЂРµ.
  */
 std::multimap<int, int> group_by_last_digit(const std::vector<int>& vec) {
     std::multimap<int, int> mmap;
@@ -30,8 +30,8 @@ std::multimap<int, int> group_by_last_digit(const std::vector<int>& vec) {
 }
 
 /**
- * @brief Выводит содержимое `multimap` на экран.
- * @param mmap Мультиотображение для вывода.
+ * @brief Р’С‹РІРѕРґРёС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ `multimap` РЅР° СЌРєСЂР°РЅ.
+ * @param mmap РњСѓР»СЊС‚РёРѕС‚РѕР±СЂР°Р¶РµРЅРёРµ РґР»СЏ РІС‹РІРѕРґР°.
  */
 void print_multimap(const std::multimap<int, int>& mmap) {
     std::for_each(mmap.begin(), mmap.end(), [](const std::pair<const int, int>& entry) {
@@ -40,8 +40,8 @@ void print_multimap(const std::multimap<int, int>& mmap) {
 }
 
 /**
- * @brief Точка входа в программу.
- * @return int Код завершения программы.
+ * @brief РўРѕС‡РєР° РІС…РѕРґР° РІ РїСЂРѕРіСЂР°РјРјСѓ.
+ * @return int РљРѕРґ Р·Р°РІРµСЂС€РµРЅРёСЏ РїСЂРѕРіСЂР°РјРјС‹.
  */
 int main() {
     std::vector<int> V = { 12, 25, 37, 48, 19, 22, 35, 45, 67, 78 };
