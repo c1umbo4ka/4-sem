@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <vector>
 #include <algorithm>
-#include <sstream>
+#include <iterator>
 #include <locale>
 
 /**
@@ -35,21 +35,16 @@ void printVector(const std::vector<int>& vec, const std::string& message = "") {
     std::cout << std::endl;
 }
 
-/**
- * @brief Главная функция. Запрашивает ввод у пользователя, вызывает обработку и выводит результат.
- * @return int Код завершения программы.
- */
 int main() {
     setlocale(LC_ALL, "RU");
-    std::string inputLine;
+    std::cout << "Введите элементы вектора (через пробел, завершите Ctrl+D / Ctrl+Z): ";
+
+    std::vector<int> V((std::istream_iterator<int>(std::cin)), std::istream_iterator<int>());
+
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     int K;
-
-    std::cout << "Введите элементы вектора через пробел и нажмите Enter: ";
-    std::getline(std::cin, inputLine); // читаем всю строку
-
-    std::istringstream iss(inputLine);
-    std::vector<int> V((std::istream_iterator<int>(iss)), std::istream_iterator<int>());
-
     std::cout << "Введите число K, которое будет вычитаться из каждого элемента: ";
     std::cin >> K;
 
