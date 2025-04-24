@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <vector>
 #include <algorithm>
-#include <functional>
+#include <sstream>
 #include <locale>
 
 /**
@@ -16,7 +16,7 @@ std::vector<int> subtractKFromVector(const std::vector<int>& input, int K) {
     std::transform(
         input.begin(), input.end(),
         result.begin(),
-        std::bind(std::minus<int>(), std::placeholders::_1, K)
+        [K](int x) { return x - K; }
     );
 
     return result;
@@ -41,17 +41,14 @@ void printVector(const std::vector<int>& vec, const std::string& message = "") {
  */
 int main() {
     setlocale(LC_ALL, "RU");
+    std::string inputLine;
     int K;
-    int n;
 
-    std::cout << "Введите количество элементов вектора: ";
-    std::cin >> n;
+    std::cout << "Введите элементы вектора через пробел и нажмите Enter: ";
+    std::getline(std::cin, inputLine); // читаем всю строку
 
-    std::vector<int> V(n);
-    std::cout << "Введите элементы вектора: ";
-    for (int i = 0; i < n; ++i) {
-        std::cin >> V[i];
-    }
+    std::istringstream iss(inputLine);
+    std::vector<int> V((std::istream_iterator<int>(iss)), std::istream_iterator<int>());
 
     std::cout << "Введите число K, которое будет вычитаться из каждого элемента: ";
     std::cin >> K;
